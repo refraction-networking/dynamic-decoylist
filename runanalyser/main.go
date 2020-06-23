@@ -43,10 +43,9 @@ func (t *jobTicker) updateTimer() {
 
 func main() {
 	RunAnalysis()
-	RunAnalysis()
-	//for true {
-	//	runningRoutine()
-	//}
+	for true {
+		runningRoutine()
+	}
 }
 
 func RunAnalysis() {
@@ -72,6 +71,8 @@ func RunAnalysis() {
 
 	al.CalculateAverageFailureRateForEachCountry()
 	al.UpdateActiveDecoyList()
+	al.LogCountryStats("TM")
+
 	if al.FatalError {
 		time.Sleep(10 * time.Minute)
 		go RunAnalysis() // try again in 10 minutes if encounter error
