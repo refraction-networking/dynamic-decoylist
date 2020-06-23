@@ -465,6 +465,9 @@ func (al *Analyser) UpdateActiveDecoyList() {
 }
 
 func (al *Analyser) LogCountryStats(countryCodeISO string) {
+	if al.FatalError == true {
+		return
+	}
 	var cumulativeSuccesses int
 	var cumulativeFailures int
 	for _, statsForEachDecoy := range al.countryStats[countryCodeISO].decoyStatsForThisCountry {
@@ -478,31 +481,36 @@ func (al *Analyser) LogCountryStats(countryCodeISO string) {
 		DecoyIP string
 		DecoyFailureRate float64
 		numNewFlow int
+		numFailedDecoy int
 	}
 
 	var sortingSlice []kv
 	for key,value := range al.countryStats[countryCodeISO].decoyStatsForThisCountry {
-		sortingSlice = append(sortingSlice, kv{key, value.failureRate, value.numSuccesses})
+		sortingSlice = append(sortingSlice, kv{key, value.failureRate, value.numSuccesses, value.numFailures})
 	}
 
 	sort.Slice(sortingSlice, func(i, j int) bool {
 		if sortingSlice[i].DecoyFailureRate == sortingSlice[j].DecoyFailureRate {
-			return sortingSlice[i].numNewFlow >  sortingSlice[j].numNewFlow
+			if sortingSlice[i].numNewFlow == sortingSlice[j].numNewFlow {
+				return sortingSlice[i].numFailedDecoy > sortingSlice[j].numFailedDecoy
+			} else {
+				return sortingSlice[i].numNewFlow >  sortingSlice[j].numNewFlow
+			}
 		} else {
 			return sortingSlice[i].DecoyFailureRate < sortingSlice[j].DecoyFailureRate
 		}
 	})
 	f, _ := os.Create(countryCodeISO + "-" + yesterdayDate + ".csv")
 	w := bufio.NewWriter(f)
-	_, _ = fmt.Fprintf(w, "%v,%v,%v,%v\n", "Decoy", "HostName", "Failure Rate", "New Flows")
-	_, _ = fmt.Fprintf(w, "%v,%v,%v,%v\n", "Daily Average", "*", countryFailureRate, cumulativeSuccesses)
+	_, _ = fmt.Fprintf(w, "%v,%v,%v,%v,%v\n", "Decoy", "HostName", "Failure Rate", "New Flows", "Failed Decoys")
+	_, _ = fmt.Fprintf(w, "%v,%v,%v,%v,%v\n", "Daily Average", "*", countryFailureRate, cumulativeSuccesses, cumulativeFailures)
 
 	for _, value := range sortingSlice {
 		hostname := "Unknown"
 		if _, found := al.ipToHostname[value.DecoyIP]; found {
 			hostname = al.ipToHostname[value.DecoyIP]
 		}
-		_, _ = fmt.Fprintf(w, "%v,%v,%v,%v\n", value.DecoyIP, hostname, value.DecoyFailureRate, value.numNewFlow)
+		_, _ = fmt.Fprintf(w, "%v,%v,%v,%v,%v\n", value.DecoyIP, hostname, value.DecoyFailureRate, value.numNewFlow, value.numFailedDecoy)
 	}
 	w.Flush()
 	f.Close()
