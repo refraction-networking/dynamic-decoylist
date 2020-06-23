@@ -357,9 +357,12 @@ func (al *Analyser) UpdateActiveDecoyList() {
 					value.NextBenchDays--
 					if value.NextBenchDays <= 0 {
 						delete(coolDownStats, key)
+					} else {
+						coolDownStats[key] = value
 					}
 				} else {
 					value.daysRemaining--
+					coolDownStats[key] = value
 				}
 			}
 			benchedFile.Close()
@@ -443,9 +446,12 @@ func (al *Analyser) UpdateActiveDecoyList() {
 							value.NextBenchDays--
 							if value.NextBenchDays <= 0 {
 								delete(coolDownStats, key)
+							} else {
+								coolDownStats[key] = value
 							}
 						} else {
 							value.daysRemaining--
+							coolDownStats[key] = value
 						}
 					}
 					benchedFile.Close()
