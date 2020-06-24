@@ -14,6 +14,7 @@
 35.9.97.241,feig.bch.msu.edu,231,124994,31360
 35.9.11.130,spartanarchive.msu.edu,231,124999,16768
 35.8.34.22,publicapps.frib.msu.edu,231,124992,131072
+35.9.12.117,rt.hpcc.msu.edu,231,124992,31360
 35.9.12.113,84bb5f.6fbd.dn.glob.us,231,125001,45056
 35.8.223.41,lib.msu.edu,231,124991,31360
 35.9.170.27,campuscall.uadv.msu.edu,231,125001,131072
@@ -43,11 +44,9 @@
 35.8.223.9,as-archives.lib.msu.edu,231,124990,31360
 35.8.133.141,www.accounting.broad.msu.edu,231,124978,31360
 35.8.35.147,nsauth.nscl.msu.edu,231,124990,130816
-35.12.130.113,eamcweb3.usfs.msu.edu,231,124999,31360
 35.8.32.46,supplierdashboard.frib.msu.edu,231,124995,131328
 35.8.32.49,events.frib.msu.edu,231,124987,131072
 35.8.202.13,www.gmsts.org,231,124995,131072
-35.39.164.232,www.egr.gvsu.edu,237,125004,31104
 35.9.123.51,flintregistry.ctsi.msu.edu,231,124994,32512
 35.9.123.50,fw-ats.bric.msu.edu,231,124995,32416
 35.9.37.147,jupyterhub.egr.msu.edu,231,125001,30464
@@ -64,6 +63,7 @@
 35.9.170.19,www.staging.beta.alumni.msu.edu,231,124997,17920
 35.12.4.11,vdi-a-cs.campusad.msu.edu,231,124987,31360
 35.9.18.35,www.matrix.msu.edu,231,124999,2097984
+35.12.4.32,vdi-a-cs.campusad.msu.edu,231,124997,31360
 35.12.4.31,vdi-a-cs.campusad.msu.edu,231,124996,31360
 35.9.123.30,fw-ats.bric.msu.edu,231,124999,32416
 35.9.123.35,fw-ats.bric.msu.edu,231,124999,32416
@@ -104,7 +104,6 @@
 35.9.189.31,auxenterprises.rhs.msu.edu,231,61646,16768
 35.9.102.86,mcfsdb.isp.msu.edu,231,61245,16768
 35.9.102.87,travelersabroad.isp.msu.edu,231,124991,16768
-35.9.37.59,zimbra.egr.msu.edu,231,124967,16768
 35.9.102.82,osa.isp.msu.edu,231,124999,16768
 35.39.164.211,*.library.gvsu.edu,237,124997,31104
 35.9.188.115,neighborhoods.rhs.msu.edu,231,124991,16768
@@ -201,7 +200,6 @@
 35.8.12.165,webhosting10.itservices.msu.edu,231,124976,16768
 35.8.7.164,webhostingss.ats.msu.edu,231,124985,16768
 35.9.170.21,msualumni.com,231,124984,17920
-35.9.188.225,ismgmt1.rhsnet.rhs.msu.edu,231,124993,65280
 35.9.20.23,*.cse.msu.edu,231,124993,31360
 35.8.12.179,www.webhosting2.itservices.msu.edu,231,124998,16768
 35.8.26.46,hisoccs.cem.msu.edu,231,124960,31360
@@ -256,14 +254,13 @@
 35.8.12.6,webhosting6.itservices.msu.edu,231,124995,16768
 35.39.169.233,dill.mll.gvsu.edu,237,124979,131328
 35.8.29.77,sip.police.msu.edu,231,124998,262144
-192.122.184.168,www.akamaized.net,237,34483,31104
+192.122.184.162,www.akamaihd.net,237,34456,31104
+192.122.184.160,www.akamaized.net,237,34479,31104
 192.122.184.169,www.akamaized-staging.net,237,34484,31104
 35.63.64.18,www.dis.us,237,51263,31104
 35.12.141.66,mls.lac.msu.edu,237,60235,16896
 35.9.102.88,travelersarchive.isp.msu.edu,237,61269,16768
 35.8.12.124,webhosting3.itservices.msu.edu,237,120000,16768
-192.122.184.177,www.akamaized-staging.net,237,34478,31104
 35.9.18.29,africanworldhistory.org,237,100231,1049728
 35.12.141.70,mls.lac.msu.edu,237,60236,16896
-192.122.184.176,www.akamaihd-staging.net,237,34481,31104
 35.8.12.210,itastst701a.itservices.msu.edu,231,120000,31360

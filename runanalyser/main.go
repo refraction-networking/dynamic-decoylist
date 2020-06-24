@@ -71,7 +71,7 @@ func RunAnalysis() {
 
 	al.CalculateAverageFailureRateForEachCountry()
 	al.UpdateActiveDecoyList()
-	al.LogCountryStats("TM")
+	al.LogCountryStats("IR")
 
 	if al.FatalError {
 		time.Sleep(10 * time.Minute)
