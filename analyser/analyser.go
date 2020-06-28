@@ -342,7 +342,7 @@ func (al *Analyser) UpdateActiveDecoyList() {
 		coolDownStats := make(map[string]CoolDown)
 		benchedFile, err := os.Open("./" + countryCode + "_Benched.csv")
 		if err == nil { // There exist benched decoys for this country
-			fmt.Printf("Processing %v_Benched.csv ...", countryCode)
+			fmt.Printf("Processing %v_Benched.csv ...\n", countryCode)
 			scanner := bufio.NewScanner(benchedFile)
 			for scanner.Scan() {
 				line := strings.Split(scanner.Text(), ",")
