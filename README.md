@@ -34,13 +34,7 @@ The penalty threshold is set as the average failure rate (#faileddecoys / (#fail
 The program left joins the up-to-date decoy list with decoys not benched for each country, and output the active duty list in `/list/`.
 
 ## TODO
-Where to run this? (on each station or in a centralized location) 
 
-Performance penalty of country look-up per connection? 
-
-How to convert active list to blob? 
-
-Is any of these a good idea?
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
