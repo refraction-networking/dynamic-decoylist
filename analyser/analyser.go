@@ -8,6 +8,7 @@ import (
 	_ "log"
 	"os"
 	"os/exec"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -341,7 +342,7 @@ func (al *Analyser) UpdateActiveDecoyList() {
 		coolDownStats := make(map[string]CoolDown)
 		benchedFile, err := os.Open("./" + countryCode + "_Benched.csv")
 		if err == nil { // There exist benched decoys for this country
-			fmt.Printf("Processing %v_Benched.csv ...", countryCode)
+			fmt.Printf("Processing %v_Benched.csv ...\n", countryCode)
 			scanner := bufio.NewScanner(benchedFile)
 			for scanner.Scan() {
 				line := strings.Split(scanner.Text(), ",")
@@ -356,9 +357,12 @@ func (al *Analyser) UpdateActiveDecoyList() {
 					value.NextBenchDays--
 					if value.NextBenchDays <= 0 {
 						delete(coolDownStats, key)
+					} else {
+						coolDownStats[key] = value
 					}
 				} else {
 					value.daysRemaining--
+					coolDownStats[key] = value
 				}
 			}
 			benchedFile.Close()
@@ -442,9 +446,12 @@ func (al *Analyser) UpdateActiveDecoyList() {
 							value.NextBenchDays--
 							if value.NextBenchDays <= 0 {
 								delete(coolDownStats, key)
+							} else {
+								coolDownStats[key] = value
 							}
 						} else {
 							value.daysRemaining--
+							coolDownStats[key] = value
 						}
 					}
 					benchedFile.Close()
@@ -463,7 +470,57 @@ func (al *Analyser) UpdateActiveDecoyList() {
 	al.cd(al.mainDir)
 }
 
+func (al *Analyser) LogCountryStats(countryCodeISO string) {
+	if al.FatalError == true {
+		return
+	}
+	var cumulativeSuccesses int
+	var cumulativeFailures int
+	for _, statsForEachDecoy := range al.countryStats[countryCodeISO].decoyStatsForThisCountry {
+		cumulativeFailures += statsForEachDecoy.numFailures
+		cumulativeSuccesses += statsForEachDecoy.numSuccesses
+	}
+	countryFailureRate := float64(cumulativeFailures)/float64(cumulativeFailures + cumulativeSuccesses)
+	yesterdayDate := time.Now().AddDate(0, 0, -1).Format("2006-01-02")
 
+	type kv struct {
+		DecoyIP string
+		DecoyFailureRate float64
+		numNewFlow int
+		numFailedDecoy int
+	}
+
+	var sortingSlice []kv
+	for key,value := range al.countryStats[countryCodeISO].decoyStatsForThisCountry {
+		sortingSlice = append(sortingSlice, kv{key, value.failureRate, value.numSuccesses, value.numFailures})
+	}
+
+	sort.Slice(sortingSlice, func(i, j int) bool {
+		if sortingSlice[i].DecoyFailureRate == sortingSlice[j].DecoyFailureRate {
+			if sortingSlice[i].numNewFlow == sortingSlice[j].numNewFlow {
+				return sortingSlice[i].numFailedDecoy > sortingSlice[j].numFailedDecoy
+			} else {
+				return sortingSlice[i].numNewFlow >  sortingSlice[j].numNewFlow
+			}
+		} else {
+			return sortingSlice[i].DecoyFailureRate < sortingSlice[j].DecoyFailureRate
+		}
+	})
+	f, _ := os.Create(countryCodeISO + "-" + yesterdayDate + ".csv")
+	w := bufio.NewWriter(f)
+	_, _ = fmt.Fprintf(w, "%v,%v,%v,%v,%v\n", "Decoy", "HostName", "Failure Rate", "New Flows", "Failed Decoys")
+	_, _ = fmt.Fprintf(w, "%v,%v,%v,%v,%v\n", "Daily Average", "*", countryFailureRate, cumulativeSuccesses, cumulativeFailures)
+
+	for _, value := range sortingSlice {
+		hostname := "Unknown"
+		if _, found := al.ipToHostname[value.DecoyIP]; found {
+			hostname = al.ipToHostname[value.DecoyIP]
+		}
+		_, _ = fmt.Fprintf(w, "%v,%v,%v,%v,%v\n", value.DecoyIP, hostname, value.DecoyFailureRate, value.numNewFlow, value.numFailedDecoy)
+	}
+	w.Flush()
+	f.Close()
+}
 
 
 
