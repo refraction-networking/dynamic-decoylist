@@ -1086,6 +1086,7 @@
 35.39.164.211,*.library.gvsu.edu,237,124997,31104
 35.9.188.115,neighborhoods.rhs.msu.edu,231,124991,16768
 35.8.12.90,webhosting4.itservices.msu.edu,231,124998,16768
+35.9.10.203,cms01.cascade.msu.edu,231,124994,16768
 35.9.189.95,sportcamps.msu.edu,231,124972,16768
 35.8.7.134,dev.attawards.msu.edu,231,124992,16768
 35.8.223.150,listings.lib.msu.edu,231,124986,31360

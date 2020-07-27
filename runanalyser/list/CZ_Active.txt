@@ -1,4 +1,3 @@
-35.8.152.216,agris-knowledgebase.org,231,125001,31360
 35.9.250.37,vpn.msu.edu,231,124993,23552
 35.9.250.38,slow.vpn.msu.edu,231,124998,23552
 35.9.12.12,webservices.hpcc.msu.edu,231,124979,31360
@@ -53,19 +52,16 @@
 35.8.33.118,wikihost.nscl.msu.edu,231,124998,31360
 35.9.170.26,campuscalldev.uadv.msu.edu,231,124994,131072
 35.8.12.31,academicprofile.msu.edu,231,124994,31360
-35.8.35.148,gateway.nscl.msu.edu,231,124996,130816
 35.8.7.105,mel.lib.msu.edu,231,124996,16768
 35.8.33.100,groups-ext.nscl.msu.edu,231,124992,31488
 35.9.170.19,www.staging.beta.alumni.msu.edu,231,124997,17920
 35.12.4.11,vdi-a-cs.campusad.msu.edu,231,124987,31360
-207.190.177.231,monroeisd.us,32274,125005,31088
 35.9.18.35,www.matrix.msu.edu,231,124999,2097984
 35.12.4.32,vdi-a-cs.campusad.msu.edu,231,124997,31360
 35.12.4.31,vdi-a-cs.campusad.msu.edu,231,124996,31360
 35.9.123.30,fw-ats.bric.msu.edu,231,124999,32416
 35.9.123.35,fw-ats.bric.msu.edu,231,124999,32416
 35.9.123.34,fw-ats.bric.msu.edu,231,124992,32416
-35.8.232.17,streaming.wkar.msu.edu,231,124994,130816
 35.8.100.237,s5.lite.msu.edu,231,124995,16768
 35.8.100.238,s6.lite.msu.edu,231,124994,16768
 35.8.100.239,s7.lite.msu.edu,231,124993,16768
@@ -99,7 +95,6 @@
 35.39.165.181,*.cis.gvsu.edu,237,124995,31104
 35.8.11.3,*.proxy2.cl.msu.edu,231,60208,32512
 35.9.189.31,auxenterprises.rhs.msu.edu,231,61646,16768
-35.9.102.86,mcfsdb.isp.msu.edu,231,61245,16768
 35.9.102.87,travelersabroad.isp.msu.edu,231,124991,16768
 35.9.37.59,zimbra.egr.msu.edu,231,124967,16768
 35.9.102.82,osa.isp.msu.edu,231,124999,16768
@@ -245,9 +240,7 @@
 35.9.37.190,mail.egr.msu.edu,231,124990,65664
 35.12.50.2,*.1.oca.nflxvideo.net,231,124992,1049600
 35.9.18.4,africa-research.h-net.org,231,124992,1049728
-35.9.18.21,cirrus.h-net.org,231,124987,1049728
 35.8.27.235,mail.chemistry.msu.edu,231,125003,17688
-35.9.83.132,vpn.msu.edu,231,124989,16616
 35.8.12.6,webhosting6.itservices.msu.edu,231,124995,16768
 35.39.169.233,dill.mll.gvsu.edu,237,124979,131328
 35.8.29.77,sip.police.msu.edu,231,124998,262144
