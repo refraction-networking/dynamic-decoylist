@@ -32,6 +32,7 @@ The penalty threshold is set as the average failure rate (#faileddecoys / (#fail
 - If a decoy is benched, Its remaining day is shortened by one day. If the days remaining is zero, the decoy is added to the active duty list. 
 
 The program left joins the up-to-date decoy list with decoys not benched for each country, and output the active duty list in `/list/`.
+All files in `/list/` end in `_Active.txt` will be converted to .blob to be used as ClientConf.
 
 ## TODO
 
